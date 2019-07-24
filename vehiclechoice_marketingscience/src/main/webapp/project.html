@@ -1,0 +1,473 @@
+<!-- by Max Yi Ren 2013 -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>maxDesign</title>
+	<link href="css/namwoo2013.css" rel="stylesheet" type="text/css" />
+	<link href="css/font.css" rel="stylesheet" type="text/css" />
+	<link href="css/spinner.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="scripts/jquery-latest.min.js"></script>	
+	<script type="text/javascript" src="scripts/jquery-ui-1.9.1.custom.min.js"></script>
+	<script type="text/javascript" src="scripts/three.js"></script>
+	<script type="text/javascript" src="scripts/Detector.js"></script>
+	<script type="text/javascript" src="scripts/ColladaLoader.js"></script>
+	<script type="text/javascript" src="scripts/carModel.js"></script>
+	<script type="text/javascript" src="scripts/3dmodel.js"></script>
+	<script type="text/javascript" src="scripts/matchbox.js"></script>
+	<script type="text/javascript" src="scripts/bezierpatch.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+	<script type="text/javascript" src="scripts/spinner.js"></script>
+</head>
+<body>
+	<div id="finish" class="marker" hidden="hidden">
+<!-- 	<div id="finish" class="marker"> -->
+		<div style="padding:40px 80px 0 80px;"><a style="font-size:150%;color:#bbbbbb;">
+		Before you leave, please tell us a little bit more about yourself. Then you can redeem code and submit the survey.
+		Again, thank you for your time.<br></a>
+			<br>
+			<select id="age">
+	            <option selected disabled value="-1">What is your age?</option>
+	            <option value="0">15 - 24 yrs</option>
+	            <option value="1">25 - 34 yrs</option>
+	            <option value="2">35 - 44 yrs</option>
+	            <option value="3">45 - 54 yrs</option>
+	            <option value="4">55 - 64 yrs</option>
+	            <option value="5">65 - 74 yrs</option>
+	            <option value="6">75 - 84 yrs</option>
+	            <option value="7">More than 84 yrs</option>            
+        	</select>
+        	<br>
+   			<select id="gender">
+	            <option selected disabled value="-1">What is your gender?</option>
+	            <option value="0">Male</option>
+	            <option value="1">Female</option>
+        	</select>
+        	<br>
+        	<select id="marital">
+	            <option selected disabled value="-1">Please indicate your marital status.</option>
+	            <option value="0">Married</option>
+	            <option value="1">Single, never married</option>
+	            <option value="2">Divorced, widowed, separated</option>
+        	</select>
+            <br>
+        	<select id="spouse">
+	            <option selected disabled value="-1">Is your spouse employed?</option>
+	            <option value="0">Yes</option>
+	            <option value="1">No</option>
+	            <option value="2">I don’t have a spouse</option>
+        	</select>    	        	
+        	<br>
+        	<select id="family">
+	            <option selected disabled value="-1">How many family members do you have? (Including yourself)</option>
+	            <option value="0">1</option>
+	            <option value="1">2</option>
+	            <option value="2">3</option>
+	            <option value="3">4</option>
+	            <option value="4">5</option>
+	            <option value="5">6</option>
+	            <option value="6">7</option>
+	            <option value="7">8</option>
+	            <option value="8">9</option>
+	            <option value="9">More than 9</option>
+           </select>    	
+        	<br>
+         	<select id="children">
+	            <option selected disabled value="-1">How many children do you have?</option>
+	            <option value="0">0</option>
+	            <option value="1">1</option>
+	            <option value="2">2</option>
+	            <option value="3">3</option>
+	            <option value="4">4</option>
+	            <option value="5">5</option>
+	            <option value="6">6</option>
+	            <option value="7">7</option>
+	            <option value="8">8</option>
+	            <option value="9">More than 8</option>
+           </select>    	
+        	       	
+        	<br>
+          	<select id="education">
+	            <option selected disabled value="-1">Please indicate the highest level of education you have completed.</option>
+	            <option value="0">Grade school</option>
+	            <option value="1">Some high school</option>
+	            <option value="2">High school graduate</option>
+	            <option value="3">Some trade school</option>
+	            <option value="4">Trade school graduate</option>
+	            <option value="5">Some community college</option>
+	            <option value="6">Graduate with two-year degree</option>
+	            <option value="7">Some university</option>
+	            <option value="8">Graduate with bachelor’s degree</option>
+	            <option value="9">Some postgraduate study</option>
+	            <option value="10">Postgraduate degree</option>
+	            <option value="11">Other</option>	            	            
+           </select>    	
+        	<br>       	       	
+           <select id="income">
+	            <option selected disabled value="-1">Please check your approximate total annual household income from all sources (before taxes).</option>
+	            <option value="0">$15,000 or less</option>
+	            <option value="1">$15,001 - $20,000</option>
+	            <option value="2">$20,001 - $25,000</option>
+	            <option value="3">$25,001 - $30,000</option>
+	            <option value="4">$30,001 - $35,000</option>
+	            <option value="5">$35,001 - $40,000</option>
+	            <option value="6">$40,001 - $45,000</option>
+	            <option value="7">$45,001 - $50,000</option>
+	            <option value="8">$50,001 - $55,000</option>
+	            <option value="9">$55,001 - $65,000</option>
+	            <option value="10">$65,001 - $75,000</option>
+	            <option value="11">$75,001 - $85,000</option>	            	            
+	            <option value="12">$85,001 - $100,000</option>
+	            <option value="13">$100,001 - $125,000</option>
+	            <option value="14">$125,001 - $150,000</option>
+	            <option value="15">$150,001 - $200,000</option>
+	            <option value="16">$200,001 - $300,000</option>
+	            <option value="17">$300,001 - $400,000</option>
+	            <option value="18">Over $400,000</option>
+	            <option value="19">Prefer not to answer</option> 
+           </select>          	
+        	<br>
+           <select id="earners">
+	            <option selected disabled value="-1">Including yourself, how many wage earners contribute to your household’s income?</option>
+	            <option value="0">One person</option>
+	            <option value="1">Two people</option>
+	            <option value="2">More than two people</option>
+           </select>    
+        	<br>
+           <select id="classify">
+	            <option selected disabled value="-1">How would you classify yourself?</option>
+	            <option value="0">African-American</option>
+	            <option value="1">Caucasian</option>
+	            <option value="2">Native American</option>
+	            <option value="3">Hispanic/Latino</option>
+	            <option value="4">Asian-American</option>
+	            <option value="5">Other</option>
+           </select>    
+        	<br>       	       	
+           <select id="occupation">
+	            <option selected disabled value="-1">Which one of the following best describes your current occupation?</option>
+	            <option value="0">Armed services</option>
+	            <option value="1">Senior executive</option>
+	            <option value="2">Mid-level manager</option>
+	            <option value="3">Entry-level professional</option>
+	            <option value="4">Owner, Self-employed</option>
+	            <option value="5">Clerical</option>
+	            <option value="6">Technician</option>
+	            <option value="7">Police, Postal, Fire</option>
+	            <option value="8">Sales</option>
+	            <option value="9">Teacher, Educator</option>
+	            <option value="10">Professional, Specialty</option>
+	            <option value="11">Farming, Forestry, Fishing</option>	            	            
+	            <option value="12">Service worker (food, cleaning)</option>
+	            <option value="13">Precision production, Craftsworker</option>
+	            <option value="14">Driver, Machine operator</option>
+	            <option value="15">Fabricator, Laborer</option>
+	            <option value="16">Student</option>
+	            <option value="17">Homemaker</option>
+	            <option value="18">Retired</option>
+	            <option value="19">Other</option> 
+           </select>  
+        	<br>
+           <select id="location">
+	            <option selected disabled value="-1">Where is your home located?</option>
+	            <option value="0">Metropolitan city</option>
+	            <option value="1">Suburban community of a larger city</option>
+	            <option value="2">Small town or rural city</option>
+	            <option value="3">Farming area</option>
+           </select>  
+			<br>
+		   	
+		</div>
+<!-- 		<div id="restart" class="cbutton active"><a>Restart</a></div> -->
+	<div id="mturk" class="cbutton"><a>REDEEM CODE & SUBMIT SURVEY</a></div>     
+		
+	</div>
+	<div id="status"><a></a></div>
+	<div id="container">
+	<div id="blanket"></div>
+	<h1 style="color:#777777"></h1>
+		<div id="status"></div>
+		<div id="question"></div>
+		<div id="spinner"></div>
+		<div id="notice"></div>
+		<div id="displayframe1"></div>
+		<div id="displayframe2"></div>
+		<div id="attribute1frame1"></div>
+		<div id="attribute2frame1"></div>
+		<div id="attribute1frame2"></div>
+		<div id="attribute2frame2"></div>
+	<div id="controlframe">
+		<div id="leftmost" class="cbutton active"><a>Much Better</a></div>
+		<div id="left" class="cbutton active"><a>Better</a></div>
+		<div id="neutral" class="cbutton active"><a>Hard to say</a></div>
+		<div id="right" class="cbutton active"><a>Better</a></div>
+		<div id="rightmost" class="cbutton active"><a>Much Better</a></div>
+		<div id="confirm" class="cbutton"><a>Confirm</a></div>
+	</div>
+	</div>
+	
+ 	<script type="text/javascript">
+ 		if(!indifferentChoice){
+ 			$('#neutral').hide();
+ 		}
+
+ 		wspinner = new Spinner($('#spinner')[0], 'white');
+		wspinner.show();
+ 		T = new test();
+		T.initiate();
+		$('#question').html(question1);
+		$(".cbutton").not("div#confirm").not("div#mturk").click(function(){
+			if ($(this).hasClass("active")){
+				$(".cbutton").not(this).not("div#confirm").not("div#mturk").removeClass("selected").addClass("active");
+				$("div#confirm").addClass("active");
+				if ($(this).hasClass("selected")){
+				}
+				else{
+					$(this).addClass("selected").removeClass("active");
+					if (this.id == "leftmost"){
+						T.currentY = 2;
+						$("div#displayframe1").addClass("selected");
+						$("div#displayframe2").removeClass("selected");
+					}
+					else if (this.id == "left"){
+						T.currentY = 1;
+						$("div#displayframe1").addClass("selected");
+						$("div#displayframe2").removeClass("selected");
+					}
+					else if (this.id == "neutral"){
+						T.currentY = 0;
+						$("div#displayframe1").removeClass("selected");
+						$("div#displayframe2").removeClass("selected");
+					}
+					else if (this.id == "right"){
+						T.currentY = -1;
+						$("div#displayframe2").addClass("selected");
+						$("div#displayframe1").removeClass("selected");
+					}
+					else if (this.id == "rightmost"){
+						T.currentY = -2;
+						$("div#displayframe2").addClass("selected");
+						$("div#displayframe1").removeClass("selected");
+					}
+				}
+			}
+		});
+		
+		$("div#confirm.cbutton").click(function(){
+			if($(this).hasClass("active")){
+				$(this).addClass("selected");
+				$(".cbutton").not(this).not("div#mturk").removeClass("selected").addClass("active");
+				$("div#displayframe1").removeClass("selected");
+				$("div#displayframe2").removeClass("selected");
+				$("div#blanket").fadeIn(200);
+				wspinner.show();
+				$('div#status p').html("Thinking really hard...");
+
+				$('#leftmost').removeClass("active");
+				$('#rightmost').removeClass("active");
+				$('#left').removeClass("active");
+				$('#right').removeClass("active");
+				
+				if(T.iter<T.ntest){
+					if (T.styleChosen){
+						T.styleChosenAction(counterbalance);
+						T.styleChosen = counterbalance? true:false;
+						if(!purchaseChoice){
+							if(!counterbalance){
+								$('#leftmost').hide();
+								$('#rightmost').hide();	
+								$('#left').html('Buy this');
+								$('#right').html('Buy this');
+							}
+							else{
+								$('#leftmost').show();
+								$('#rightmost').show();	
+								$('#left').html('Better');
+								$('#right').html('Better');
+							}
+						}
+						if (counterbalance){ // end of one iteration?
+							counterbalance = false;
+						}
+					}
+					else{
+						T.attributeChosenAction(counterbalance);
+						T.styleChosen = counterbalance? true:false;
+						if(!purchaseChoice){
+							if(counterbalance){
+								$('#leftmost').show();
+								$('#rightmost').show();
+								$('#left').html('Better');
+								$('#right').html('Better');
+							}
+							else{
+								$('#leftmost').hide();
+								$('#rightmost').hide();
+								$('#left').html('Buy this');
+								$('#right').html('Buy this');
+							}
+						}
+						if (!counterbalance){ // end of one iteration?
+							counterbalance = true;
+						}
+					}
+				}
+				else if(T.iter<T.ntest+T.nvalidate){
+					T.validateY.push(T.currentY);
+					T.showValidate();
+				}
+				else{
+					T.validateY.push(T.currentY);
+					$("div#finish.marker").show();
+				}
+			}
+			$(this).removeClass("selected").removeClass("active");
+		});
+		
+		$("div#restart.cbutton").click(function(){
+			$("div#finish.marker").hide();
+			window.location.reload(false);
+		});
+		$("div#mturk.cbutton").click(function(){
+			if($(this).hasClass("active")){
+				if(T.iter>0){
+					//getMTurkCodePost();
+					T.store();
+				}
+				else{
+					alert("The survey is not finished yet.")
+				}
+				$(this).removeClass("selected");
+			}
+		});
+		
+		// copy paste this section and change label
+		$("#age").change(function(){
+			T.survey["age"] = $(this).val();
+			
+			// add all labels to the line below
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		$("#gender").change(function(){
+			T.survey["gender"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		$("#marital").change(function(){
+			T.survey["marital"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+		
+		$("#spouse").change(function(){
+			T.survey["spouse"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+		$("#family").change(function(){
+			T.survey["family"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+		$("#children").change(function(){
+			T.survey["children"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+								
+		
+		$("#education").change(function(){
+			T.survey["education"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+		$("#income").change(function(){
+			T.survey["income"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+		$("#earners").change(function(){
+			T.survey["earners"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+		$("#classify").change(function(){
+			T.survey["classify"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+		$("#occupation").change(function(){
+			T.survey["occupation"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+		$("#location").change(function(){
+			T.survey["location"] = $(this).val();
+			if(T.survey["age"]!="-1"&&T.survey["gender"]!="-1"&&T.survey["marital"]!="-1"&&T.survey["spouse"]!="-1"&&T.survey["family"]!="-1"&&T.survey["children"]!="-1"&&T.survey["education"]!="-1"&&T.survey["income"]!="-1"&&T.survey["earners"]!="-1"&&T.survey["classify"]!="-1"&&T.survey["occupation"]!="-1"&&T.survey["location"]!="-1"){
+				$("#mturk").addClass("active");
+			}
+			else{
+				$("#mturk").removeClass("active");
+			}
+		});
+		
+
+		
+	</script>
+</body>
+</html>

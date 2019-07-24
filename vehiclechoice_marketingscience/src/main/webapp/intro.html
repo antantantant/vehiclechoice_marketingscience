@@ -1,0 +1,50 @@
+<!-- by Max Yi Ren 2013 -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>maxDesign</title>
+	<link href="css/namwoo2013.css" rel="stylesheet" type="text/css" />
+	<link href="css/font.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="scripts/jquery-latest.min.js"></script>	
+	
+</head>
+<body>
+	<h1 style="color:#777777"></h1>
+	<div id="welcome">
+		
+		<p>Welcome dear participant! This is a survey about your opinions on vehicle styling,
+		developed and conducted by *** at ***. 
+		Thank you so much for your time! </p><br></br>
+		<img src="./resource/intro.png" width="400px"></img><br></br>
+		<p>The survey will take approximately 20 minutes and 30 rounds. Depending on your computer specifications and server status, 
+		it could take up to 10 seconds for the next question to appear. </p><br></br>
+		<div class="vertical"></div>
+		<div id="proceed" class="cbutton active"><a>Proceed to Instructions</a></div>
+	</div>
+	<div id="styling" >
+		<img src="./resource/tutorial.png" width="600px"></img><br></br>
+		<p>There are <i>two kinds</i> of questions:<br></br>
+		To answer a <a style="color: #BA9488;">styling question</a>, compare a pair of cars based only on their styles.
+		<br><br/>To answer a <a style="color: #88AEBA;">purchase question</a>, choose the car that you are more willing to buy, 
+		by considering (1) <b>price</b> (Manufactures Suggested Retail Price), (2) <b>fuel economy</b> (Miles Per Gallon) and <b>styling</b>.</p>
+		<div class="vertical"></div>
+		<div id="start" class="cbutton active"><a>Start Survey</a></div>
+	</div>
+	<div id="blanket" style="top:10%;height:90%;"></div>
+ 	<script type="text/javascript">
+ 		$("#blanket").fadeOut(200);
+	 	$("div#styling").hide();
+		$("div#proceed.cbutton").click(function(){
+			$("#blanket").fadeIn(200);
+			$("div#welcome").hide();
+			$("#blanket").fadeOut(400,function(){$("div#styling").show();});
+		});
+		$("div#start.cbutton").click(function(){
+			window.location = "/project.html";
+		});
+	</script>
+</body>
+</html>
